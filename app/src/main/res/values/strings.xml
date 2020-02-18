@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Tutorial</string>
+    <string name="app_name">Linke\'s Training APP</string>
+    <string name="main_message">BORA FICAR MONSTRO!!</string>
+    <string name="main_button">COMEÇAR TREINO</string>
 </resources>
