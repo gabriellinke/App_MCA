@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name">Linke\'s Training APP</string>
     <string name="main_message">BORA FICAR MONSTRO!!</string>
+
     <string name="main_button">COMEÇAR TREINO</string>
     <string name="push_button">Peito e tríceps</string>
     <string name="pull_button">Costas e bíceps</string>
     <string name="leg_button">Pernas</string>
     <string name="run_button">Corrida</string>
-    <string name="label_segunda">Escolha de Treinos</string>
+
+    <string name="label_escolha">Escolha de Treinos</string>
+    <string name="label_pull">Treino de costas e bíceps</string>
+    <string name="label_push">Treino de peito e tríceps</string>
+    <string name="label_leg">Treino de pernas</string>
+    <string name="label_run">Treino de corrida</string>
 </resources>

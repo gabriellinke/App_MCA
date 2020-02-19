@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.tutorial">
 
     <application
@@ -8,7 +9,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +20,23 @@
         </activity>
 
         <activity android:name=".SegundaActivity"
-            android:label="@string/label_segunda">
-            
+            android:label="@string/label_escolha">
+        </activity>
+
+        <activity android:name=".TreinoPull"
+            android:label="@string/label_pull">
+        </activity>
+
+        <activity android:name=".TreinoPush"
+            android:label="@string/label_push">
+        </activity>
+
+        <activity android:name=".TreinoLeg"
+            android:label="@string/label_leg">
+        </activity>
+
+        <activity android:name=".TreinoRun"
+            android:label="@string/label_run">
         </activity>
 
     </application>
