@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/txvConsumo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3.200L"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <TextView
+        android:id="@+id/txvData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txvConsumo"
+        android:layout_marginTop="0dp"
+        android:text="01/03/2020"
+        android:textSize="14dp"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="1dp" />
+</RelativeLayout>

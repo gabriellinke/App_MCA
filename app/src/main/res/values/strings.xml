@@ -1,16 +1,36 @@
 <resources>
-    <string name="app_name">Linke\'s Training APP</string>
-    <string name="main_message">BORA FICAR MONSTRO!!</string>
+    <string name="app_name">Medidor de Consumo de Água</string>
+    <string name="main_message">Bem vindo ao aplicativo do MCA!!</string>
+    <string name="parear_message">Após conectar-se ao bluetooth, realize o pareamento com o HC-05</string>
+    <string name="lista_dispositivos_message">Lista de dispositivos</string>
+    <string name="conferir_message">Confira se o dispositivo está pareado</string>
 
-    <string name="main_button">COMEÇAR TREINO</string>
-    <string name="push_button">Peito e tríceps</string>
-    <string name="pull_button">Costas e bíceps</string>
-    <string name="leg_button">Pernas</string>
-    <string name="run_button">Corrida</string>
+    <string name="start_button">INICIAR</string>
+    <string name="atualizar_button">Atualizar consumo atual</string>
+    <string name="consultar_button">Consultar consumo atual</string>
+    <string name="finalizar_button">Finalizar dia</string>
+    <string name="historico_button">Histórico de consumo</string>
+    <string name="parear_button_conectar">Conectar</string>
+    <string name="parear_button_desconectar">Desconectar</string>
+    <string name="solicitar_button">Solicitar dados</string>
+    <string name="zerar_button">Zerar dados</string>
 
-    <string name="label_escolha">Escolha de Treinos</string>
-    <string name="label_pull">Treino de costas e bíceps</string>
-    <string name="label_push">Treino de peito e tríceps</string>
-    <string name="label_leg">Treino de pernas</string>
-    <string name="label_run">Treino de corrida</string>
+    <string name="label_escolha">Opções do MCA</string>
+    <string name="label_atualizar">Atualizar consumo atual</string>
+    <string name="label_consultar">Consultar consumo atual</string>
+    <string name="label_finalizar">Finalizar dia</string>
+    <string name="label_historico">Histórico de consumo</string>
+    <string name="label_parear">Dispositivos Bluetooth</string>
+
+
+
+    <string name="title_activity_cursores">CursoresActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
 </resources>

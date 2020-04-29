@@ -3,9 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Switch
-        android:id="@+id/switch1"
+    <TextView
+        android:id="@+id/consumo_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TREINO DE PEITO CONCLUÍDO" />
+        android:text="Você atualizou seu consumo" />
 </LinearLayout>

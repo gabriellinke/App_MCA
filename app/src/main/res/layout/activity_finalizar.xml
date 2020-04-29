@@ -4,16 +4,9 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/finalizar_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TEMPO DE CORRIDA" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="time" />
+        android:text="Você finalizou seu dia" />
 
 </LinearLayout>

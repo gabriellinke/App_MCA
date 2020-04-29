@@ -3,15 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <CheckBox
-        android:id="@+id/checkBox"
+    <TextView
+        android:id="@+id/consultar_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LEG PRESS" />
-
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="AGACHAMENTO" />
+        android:text="VOCÊ CONSUMIU 0.00L" />
 </LinearLayout>

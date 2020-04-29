@@ -3,11 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.tutorial">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_agua"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_agua"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
@@ -19,25 +24,33 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SegundaActivity"
-            android:label="@string/label_escolha">
-        </activity>
+        <activity
+            android:name=".HistoricoActivity"
+            android:label="@string/label_historico"/>
+        <activity
+            android:name=".CursoresActivity"
+            android:label="Cursores" />
+        <activity
+            android:name=".SegundaActivity"
+            android:label="@string/label_escolha" />
+        <activity
+            android:name=".ConsultarActivity"
+            android:label="@string/label_consultar" />
+        <activity
+            android:name=".FinalizarActivity"
+            android:label="@string/label_finalizar" />
+        <activity
+            android:name=".AtualizarActivity"
+            android:label="@string/label_atualizar" />
 
-        <activity android:name=".TreinoPull"
-            android:label="@string/label_pull">
-        </activity>
+        <activity
+            android:name=".multiplayerConnect"
+            android:label="@string/label_parear" />
 
-        <activity android:name=".TreinoPush"
-            android:label="@string/label_push">
-        </activity>
-
-        <activity android:name=".TreinoLeg"
-            android:label="@string/label_leg">
-        </activity>
-
-        <activity android:name=".TreinoRun"
-            android:label="@string/label_run">
-        </activity>
+        <activity
+            android:name=".ListaDispositivos"
+            android:label="Dispositivos pareados"
+            android:theme="@android:style/Theme.Dialog"/>
 
     </application>
 

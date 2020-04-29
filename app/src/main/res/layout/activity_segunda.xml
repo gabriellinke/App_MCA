@@ -1,29 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="4dp"
+    >
 
     <Button
-        android:id="@+id/pull_button"
+        android:id="@+id/consultar_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/pull_button" />
+
+        android:background="@drawable/buttonshape"
+
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:text="@string/consultar_button" />
 
     <Button
-        android:id="@+id/push_button"
+        android:id="@+id/historico_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/push_button" />
+
+        android:background="@drawable/buttonshape"
+
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:text="@string/historico_button" />
 
     <Button
-        android:id="@+id/leg_button"
+        android:id="@+id/atualizar_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/leg_button" />
+
+        android:background="@drawable/buttonshape"
+
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:text="@string/atualizar_button" />
 
     <Button
-        android:id="@+id/run_button"
+        android:id="@+id/finalizar_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/run_button" />
+        android:background="@drawable/buttonshape"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:text="@string/finalizar_button" />
+
+    <TextView
+        android:id="@+id/estado_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 ml"
+        android:layout_gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/solicitar_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/buttonshape"
+            android:text="@string/solicitar_button"
+            android:textColor="#000000"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/zerar_button"
+            android:layout_width="wrap_content"
+
+            android:layout_height="40dp"
+
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/buttonshape"
+
+            android:text="@string/zerar_button"
+            android:textColor="#000000"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/parear_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/parear_message"
+        android:textSize="15sp" />
+
+
+    <Button
+        android:id="@+id/parear_button"
+        android:text="@string/parear_button_conectar"
+
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:textSize="15sp"
+        android:textColor="#000000"
+        android:background="@drawable/buttonshape" />
+
+
 </LinearLayout>
