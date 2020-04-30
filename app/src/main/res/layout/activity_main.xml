@@ -6,37 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:background="@drawable/fundo_main"
     >
 
-    <TextView
-        android:id="@+id/main_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:text="@string/main_message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
-    android:id="@+id/start_button"
+        android:id="@+id/start_button"
 
-    android:text="@string/start_button"
-    android:textColor="#000000"
-    android:textSize="30sp"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
 
-    android:layout_marginTop="10dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/main_text"
+        android:background="@android:color/transparent"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:text="@string/start_button"
 
-    android:layout_width="270dp"
-    android:layout_height="60dp"
-    android:background="@drawable/buttonshape"
-    />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.706" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

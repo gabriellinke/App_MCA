@@ -4,49 +4,69 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="4dp"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:background="@drawable/activity_background"
+    >
 
     <Button
         android:id="@+id/consultar_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:background="@android:color/transparent"
+        android:shadowColor="#FFFFFF"
+        android:shadowDx="2"
+        android:shadowDy="1"
+        android:shadowRadius="6"
+        android:textSize="22sp"
 
-        android:background="@drawable/buttonshape"
-
-
-        android:layout_margin="4dp"
+        android:layout_margin="16dp"
         android:text="@string/consultar_button" />
 
     <Button
         android:id="@+id/historico_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:background="@android:color/transparent"
+        android:shadowColor="#FFFFFF"
+        android:shadowDx="2"
+        android:shadowDy="1"
+        android:shadowRadius="6"
+        android:textSize="22sp"
 
-        android:background="@drawable/buttonshape"
-
-
-        android:layout_margin="4dp"
+        android:layout_margin="16dp"
         android:text="@string/historico_button" />
 
     <Button
         android:id="@+id/atualizar_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:background="@drawable/buttonshape"
-
-
-        android:layout_margin="4dp"
+        android:textColor="#FFFFFF"
+        android:background="@android:color/transparent"
+        android:shadowColor="#FFFFFF"
+        android:shadowDx="2"
+        android:shadowDy="1"
+        android:shadowRadius="6"
+        android:textSize="22sp"
+        android:layout_margin="16dp"
         android:text="@string/atualizar_button" />
 
     <Button
         android:id="@+id/finalizar_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/buttonshape"
+        android:textColor="#FFFFFF"
+        android:background="@android:color/transparent"
+        android:shadowColor="#FFFFFF"
+        android:shadowDx="2"
+        android:shadowDy="1"
+        android:shadowRadius="6"
+        android:textSize="22sp"
 
-        android:layout_margin="4dp"
+
+
+        android:layout_margin="16dp"
         android:text="@string/finalizar_button" />
 
     <!-- Bottom Gravity -->
@@ -62,6 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textColor="#000"
+            android:textStyle="bold"
             android:text="@string/parear_message"
             android:textSize="15sp"
             android:layout_margin="4dp"/>
@@ -69,10 +91,14 @@
 
         <Button
             android:id="@+id/parear_button"
-            android:background="@drawable/buttonshape"
             android:text="@string/parear_button_conectar"
-            android:textColor="#000000"
-            android:textSize="15sp"
+            android:textSize="30sp"
+            android:textColor="#FFFFFF"
+            android:background="@android:color/transparent"
+            android:shadowColor="#FFFFFF"
+            android:shadowDx="2"
+            android:shadowDy="1"
+            android:shadowRadius="6"
 
             android:layout_margin="4dp"
             android:layout_width="match_parent"

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Medidor de Consumo de Água</string>
-    <string name="main_message">Bem vindo ao aplicativo do MCA!!</string>
     <string name="parear_message">Após conectar-se ao bluetooth, realize o pareamento com o HC-05</string>
     <string name="consumo_message">Consumo atual:</string>
 
