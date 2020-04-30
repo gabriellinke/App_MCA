@@ -330,7 +330,7 @@ public class SegundaActivity extends AppCompatActivity  {
 
     /**---- CONSTRUTOR ----------------------------------------------------------------------------------------------------------------------------------------------**/
 
-        public ConnectedThread(BluetoothSocket socket) {
+        private ConnectedThread(BluetoothSocket socket) {
             InputStream tmpIn = null;
             OutputStream tmpOut = null;
 
@@ -340,7 +340,7 @@ public class SegundaActivity extends AppCompatActivity  {
                 tmpIn = socket.getInputStream();
                 tmpOut = socket.getOutputStream();
             } catch (IOException e) {
-                Toast.makeText(getApplicationContext(), "Falha", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Falha na thread", Toast.LENGTH_SHORT).show();
             }
 
             mmInStream = tmpIn;
@@ -376,14 +376,14 @@ public class SegundaActivity extends AppCompatActivity  {
 
     /**---- FUNÇÃO PARA ENVIAR DADOS -------------------------------------------------------------------------------------------------------------------------------**/
 
-        public void enviar(String dadosEnviar)
+        private void enviar(String dadosEnviar)
         {
             try
             {
                 byte[] msgBuffer = dadosEnviar.getBytes();
                 mmOutStream.write(msgBuffer);
             }
-            catch (IOException e) {}
+            catch (IOException e) {Toast.makeText(getApplicationContext(), "Erro ao enviar dados", Toast.LENGTH_SHORT).show(); }
         }
 
     /**-------------------------------------------------------------------------------------------------------------------------------------------------------------**/
@@ -391,9 +391,9 @@ public class SegundaActivity extends AppCompatActivity  {
 /**--------------------------------------------------------------------------------------------------------------------------------------------------------------**/
 
 /** FUNÇÃO USADA PARA RETORNAR UM VETOR COM O DIA, MÊS E ANO ATUAL -----------------------------------------------------------------------------------------------**/
-    public static class Get_Calendar
+    private static class Get_Calendar
     {
-        public static int[] main()
+        private static int[] main()
         {
             Calendar c = Calendar.getInstance();
 
@@ -401,7 +401,7 @@ public class SegundaActivity extends AppCompatActivity  {
             int mes = c.get(Calendar.MONTH) +1; //retorna os meses de 0 a 11
             int ano = c.get(Calendar.YEAR);
 
-            int data[];
+            int[] data;
             data = new int[3];
             data[0] = dia;
             data[1] = mes;
