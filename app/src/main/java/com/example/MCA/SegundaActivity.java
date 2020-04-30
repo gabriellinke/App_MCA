@@ -11,10 +11,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -30,7 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SegundaActivity extends AppCompatActivity  {
 
     //BOTÕES
-    Button botaoConectar, botaoZerar, botaoAtualizar, botaoConsultar, botaoFinalizar, botaoHistorico;
+    Button botaoConectar, botaoAtualizar, botaoConsultar, botaoFinalizar, botaoHistorico;
 
     //VARIÁVEIS PARA UTILIZAR O BLUETOOTH
     BluetoothAdapter meuBluetoothAdapter = null; //PONTO DE ENTRADA PARA TODA INTERAÇÃO BLUETOOTH
@@ -73,7 +71,6 @@ public class SegundaActivity extends AppCompatActivity  {
         /**---- BOTÕES ------------------------------------------------------------------------------------------------------------------------------------------------**/
 
         botaoConectar   = (Button) findViewById(R.id.parear_button);
-        botaoZerar      = (Button) findViewById(R.id.zerar_button);
         botaoAtualizar  = (Button) findViewById(R.id.atualizar_button);
         botaoConsultar  = (Button) findViewById(R.id.consultar_button);
         botaoFinalizar  = (Button) findViewById(R.id.finalizar_button);
@@ -131,20 +128,6 @@ public class SegundaActivity extends AppCompatActivity  {
             }
         });
 
-        botaoZerar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(conexao)
-                {
-                    connectedThread.enviar("zerar");
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Bluetooth não está conectado", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
         botaoAtualizar.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -154,6 +137,7 @@ public class SegundaActivity extends AppCompatActivity  {
                 if(conexao)
                 {
                     connectedThread.enviar("solicitarDados");
+                    Toast.makeText(getApplicationContext(), "Consumo atualizado", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -204,6 +188,8 @@ public class SegundaActivity extends AppCompatActivity  {
 
                     //ZERAR ARDUINO
                     connectedThread.enviar("zerar");
+
+                    Toast.makeText(getApplicationContext(), "Dia finalizado", Toast.LENGTH_SHORT).show();
                 }
                 else
                     Toast.makeText(getApplicationContext(), "Bluetooth não está conectado", Toast.LENGTH_SHORT).show();
