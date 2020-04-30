@@ -1,4 +1,4 @@
-package com.example.tutorial;
+package com.example.MCA;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,10 +15,12 @@ public class ConsultarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultar);
 
+        //SALVA O CONSUMO ATUAL NA VARIÁVEL CONSUMO
         int consumo = 0;
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         consumo = sp.getInt("consumo_atual", 0);
 
+        //ATUALIZA A TEXTVIEW QUE MOSTRA O CONSUMO COM O DADO ATUALIZADO
         TextView tv = (TextView) findViewById(R.id.consumo_number);
         tv.setText(consumo/1000.0f + " L");
     }

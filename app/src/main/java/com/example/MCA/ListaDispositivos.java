@@ -1,4 +1,4 @@
-package com.example.tutorial;
+package com.example.MCA;
 
 import android.app.ListActivity;
 import android.bluetooth.BluetoothAdapter;
@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -25,19 +24,21 @@ public class ListaDispositivos extends ListActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //USADO PARA MOSTRAR A LISTA DE DISPOSITIVOS PAREADOS
         ArrayAdapter<String> ArrayBluetooth = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
 
         meuBluetoothAdapter2 = BluetoothAdapter.getDefaultAdapter();
 
+        //RECEBE OS DISPOSITIVOS PAREADOS
         Set<BluetoothDevice> dispositivosPareados = meuBluetoothAdapter2.getBondedDevices();
 
-        if(dispositivosPareados.size() > 0)
+        if(dispositivosPareados.size() > 0) //SE TIVER DISPOSITIVOS PAREADOS
         {
-            for(BluetoothDevice dispositivo : dispositivosPareados)
+            for(BluetoothDevice dispositivo : dispositivosPareados) //PERCORRE TODOS DISPOSITIVOS PAREADOS
             {
-                String nomeBt = dispositivo.getName();
-                String macBt  = dispositivo.getAddress();
-                ArrayBluetooth.add(nomeBt + "\n" + macBt);
+                String nomeBt = dispositivo.getName();      //PEGA O NOME DO DISPOSITIVO BLUETOOTH
+                String macBt  = dispositivo.getAddress();   //PEGA O ENDEREÇO MAC DO DISPOSITIVO
+                ArrayBluetooth.add(nomeBt + "\n" + macBt);  //SALVA NO ADAPTER
             }
         }
         setListAdapter(ArrayBluetooth);
@@ -47,16 +48,13 @@ public class ListaDispositivos extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-        String informacaoGeral = ((TextView) v).getText().toString();
+        String informacaoGeral = ((TextView) v).getText().toString();   //PEGA AS INFORMAÇÕES DO ITEM CLICADO
 
-        //Toast.makeText(getApplicationContext(), "Info: " + informacaoGeral, Toast.LENGTH_LONG).show();
+        String enderecoMac = informacaoGeral.substring(informacaoGeral.length() - 17); //PEGA O ENDEREÇO MAC
 
-        String enderecoMac = informacaoGeral.substring(informacaoGeral.length() - 17);
-
-        //Toast.makeText(getApplicationContext(), "MAC: " + enderecoMac, Toast.LENGTH_LONG).show();
         Intent retornaMac = new Intent();               //UMA PONTE PARA ENVIAR A INFORMAÇÃO PARA OUTRA ACTIVITY
         retornaMac.putExtra(ENDERECO_MAC, enderecoMac); //DADO QUE VAI RETORNAR
         setResult(RESULT_OK, retornaMac);               //CONFIRMA QUE O PROCESSO FOI OK
-        finish();
+        finish();                                       //TERMINA ACTIVITY
     }
 }

@@ -1,4 +1,4 @@
-package com.example.tutorial;
+package com.example.MCA;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,33 +32,38 @@ public class HistoricoActivity extends AppCompatActivity {
         DBHelper db = new DBHelper(getBaseContext());
         SQLiteDatabase banco = db.getWritableDatabase();
 
+        //CURSOR PARA PERCORRER O BANCO DE DADOS
         mCursor = banco.rawQuery("SELECT _id, consumo, data FROM consumo", null);
 
-       String[] from = {
+        //PEGA OS DADOS DA COLUNA DE CONSUMO E DE DATA
+        String[] from = {
                "consumo",
                "data"
-       };
+        };
 
-       int[] to = {
+        //COLOCA OS DADOS NAS TEXTVIEWS
+        int[] to = {
                     R.id.txvConsumo,
                     R.id.txvData
         };
 
-       MeuAdapter adapter = new MeuAdapter(getBaseContext(), R.layout.lista_consumo, mCursor, from ,to ,0);
+        //CRIA O ADAPTER COM OS VETORES from E to INSTANCIADOS ANTERIORMENTE
+        MeuAdapter adapter = new MeuAdapter(getBaseContext(), R.layout.lista_consumo, mCursor, from ,to ,0);
 
+        //COLOCA OS DADOS DO ADAPTER NA LISTVIEW QUE MOSTRA O HISTÓRICO
         ListView ltvConsumo = (ListView)findViewById(R.id.ltvConsumo);
         ltvConsumo.setAdapter(adapter);
-
-
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
+        //FECHA O CURSOR
         mCursor.close();
     }
 
+    //ADAPTER CUSTOMIZADO PARA MOSTRAR OS DADOS EM VERDE SE O CONSUMO DO DIA FOR MAIOR QUE 2L E EM VERMELHO CASO O CONTRÁRIO
     public class MeuAdapter extends SimpleCursorAdapter {
 
         public MeuAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {

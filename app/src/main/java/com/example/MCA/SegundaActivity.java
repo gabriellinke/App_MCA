@@ -1,11 +1,10 @@
-package com.example.tutorial;
+package com.example.MCA;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,8 +26,6 @@ import java.util.UUID;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import static java.lang.Integer.parseInt;
 
 public class SegundaActivity extends AppCompatActivity  {
 
@@ -58,7 +55,6 @@ public class SegundaActivity extends AppCompatActivity  {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segunda); //DEFINE O LAYOUT
-
 
         /**---- BLUETOOTH ------------------------------------------------------------------------------------------------------------------------------------------------**/
 
@@ -181,7 +177,6 @@ public class SegundaActivity extends AppCompatActivity  {
             public void onClick(View v)
             {
                 //AÇÃO PARA FINALIZAR O DIA
-
                 if(conexao)
                 {
                     //ATUALIZAR CONSUMO
@@ -255,11 +250,8 @@ public class SegundaActivity extends AppCompatActivity  {
                                 String dadosFinais = dadosBluetooth.substring(inicioInformacao+1, tamInformacao); //PEGA OS DADOS QUE ESTÃO ENTRE "{" E "}"
 
                                 //TRATAR A INFORMAÇÃO AQUI
-                                Log.d("Recebidos: ", dadosFinais); //PARA DEBUGAR
 
-                                TextView tv = (TextView) findViewById(R.id.estado_text);
-                                tv.setText(dadosFinais + " ml");
-
+                                //Log.d("Recebidos: ", dadosFinais); //PARA DEBUGAR
                                 SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                                 sp.edit().putInt("consumo_atual", Integer.parseInt(dadosFinais.trim())).apply();    //SALVA O CONSUMO ATUAL
 
@@ -279,7 +271,6 @@ public class SegundaActivity extends AppCompatActivity  {
     {
         switch (requestCode)
         {
-
     /**-------- FEEDBACK SOBRE ATIVAÇÃO DO BLUETOOTH ---------------------------------------------------------------------------------------------------------------**/
 
             case SOLICITA_ATIVACAO:
@@ -323,7 +314,7 @@ public class SegundaActivity extends AppCompatActivity  {
                             Toast.makeText(getApplicationContext(), "Conectado", Toast.LENGTH_SHORT).show();
                         }
                         else
-                            Toast.makeText(getApplicationContext(), "Erro ao conectar2", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Erro ao conectar", Toast.LENGTH_LONG).show();
 
                         botaoConectar.setText(R.string.parear_button_desconectar);
                     }
@@ -340,15 +331,14 @@ public class SegundaActivity extends AppCompatActivity  {
                     Toast.makeText(getApplicationContext(), "Falha ao obter o MAC", Toast.LENGTH_SHORT).show();
                 }
                 break;
-    /**--------------------------------------------------------------------------------------------------------------------------------------------------------------**/
         }
-/**--------------------------------------------------------------------------------------------------------------------------------------------------------------**/
+        /**--------------------------------------------------------------------------------------------------------------------------------------------------------------**/
     }
+/**--------------------------------------------------------------------------------------------------------------------------------------------------------------**/
 
 /**- THREAD PARA CONEXÃO BLUETOOTH --------------------------------------------------------------------------------------------------------------------------------**/
     public class ConnectedThread extends Thread
     {
-
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
 
@@ -384,6 +374,7 @@ public class SegundaActivity extends AppCompatActivity  {
                     // Read from the InputStream
                     bytes = mmInStream.read(buffer);
 
+                    //PARA ENVIAR OS DADOS POR STRING AO INVÉS DE BYTES
                     String dadosBt = new String(buffer, 0, bytes);
 
                     // Send the obtained bytes to the UI activity
@@ -413,16 +404,16 @@ public class SegundaActivity extends AppCompatActivity  {
     }
 /**--------------------------------------------------------------------------------------------------------------------------------------------------------------**/
 
-    public static class Get_Calendar{
-
-        public static int[] main() {
+/** FUNÇÃO USADA PARA RETORNAR UM VETOR COM O DIA, MÊS E ANO ATUAL -----------------------------------------------------------------------------------------------**/
+    public static class Get_Calendar
+    {
+        public static int[] main()
+        {
             Calendar c = Calendar.getInstance();
 
             int dia = c.get(Calendar.DAY_OF_MONTH);
             int mes = c.get(Calendar.MONTH) +1; //retorna os meses de 0 a 11
             int ano = c.get(Calendar.YEAR);
-
-            Log.d("Data: ", ("Data: "+dia+"/"+mes+"/"+ano));
 
             int data[];
             data = new int[3];
@@ -433,4 +424,5 @@ public class SegundaActivity extends AppCompatActivity  {
             return data;
         }
     }
+/**--------------------------------------------------------------------------------------------------------------------------------------------------------------**/
 }

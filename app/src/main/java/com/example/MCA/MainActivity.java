@@ -1,4 +1,4 @@
-package com.example.tutorial;
+package com.example.MCA;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.tutorial">
+    package="com.example.MCA">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -36,17 +36,6 @@
         <activity
             android:name=".ConsultarActivity"
             android:label="@string/label_consultar" />
-        <activity
-            android:name=".FinalizarActivity"
-            android:label="@string/label_finalizar" />
-        <activity
-            android:name=".AtualizarActivity"
-            android:label="@string/label_atualizar" />
-
-        <activity
-            android:name=".multiplayerConnect"
-            android:label="@string/label_parear" />
-
         <activity
             android:name=".ListaDispositivos"
             android:label="Dispositivos pareados"

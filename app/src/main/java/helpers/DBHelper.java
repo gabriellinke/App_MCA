@@ -3,7 +3,6 @@ package helpers;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -16,14 +15,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(@Nullable Context context) {
         super(context, NOME_BANCO, null, VERSAO_BANCO);
-        Log.d("DBHELPER", "Constructor");
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.d("DBHELPER", "onCreate");
-
-
         String sqlConfiguracoes = "CREATE TABLE IF NOT EXISTS configuracoes (" +
                 "_id INTEGER PRIMARY KEY," +
                 "consumo REAL," +
@@ -37,10 +32,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-
-        Log.d("DBHELPER", "onUpgrade");
-
         /*switch (oldVersion)
         {
             case 1:
@@ -58,6 +49,5 @@ public class DBHelper extends SQLiteOpenHelper {
                 ");";
 
         db.execSQL(sqlConsumo);
-
     }
 }
