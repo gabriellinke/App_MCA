@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 
-import helpers.DBHelper;
-
 public class MainActivity extends AppCompatActivity
 {
     //BOTÕES
@@ -20,8 +18,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //DEFINE O LAYOUT
 
-    /**---- BOTÕES ------------------------------------------------------------------------------------------------------------------------------------------------**/
-
+        //BOTÃO PARA INICIAR O APLICATIVO
         botaoContinuar  = (Button) findViewById(R.id.start_button);
         botaoContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,15 +26,6 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(getBaseContext(), SegundaActivity.class));
             }
         });
-    /**--------------------------------------------------------------------------------------------------------------------------------------------------------------**/
 
-    /**---- BANCO DE DADOS ------------------------------------------------------------------------------------------------------------------------------------------------**/
-        //Acho q é desnecessário
-
-        //DBHelper db = new DBHelper(getBaseContext());
-        // db.getWritableDatabase();
-    /**--------------------------------------------------------------------------------------------------------------------------------------------------------------**/
-
-        //startActivity(new Intent(getBaseContext(), CursoresActivity.class));
     }
 }

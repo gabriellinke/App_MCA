@@ -2,7 +2,9 @@ package com.example.tutorial;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteTableLockedException;
@@ -11,48 +13,60 @@ import android.util.Log;
 
 import helpers.DBHelper;
 
-public class CursoresActivity extends AppCompatActivity {
+public class CursoresActivity extends AppCompatActivity
+{
 
     private Cursor mCursor;
+    private int id;
+    private String data;
+    private int consumoAtual;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_cursores);
-    }
+    protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-    //criarRegistros();
+        Intent intent = getIntent();
+        Bundle dados = intent.getExtras();  //RECUPERA DADOS DA ACTIVITY ANTERIOR
 
+        assert dados != null;
+        id = dados.getInt("id");
+        consumoAtual = dados.getInt("consumo");
+        data = dados.getString("data");
 
-    }
-
-    public void criarRegistros()
-    {
-
-        DBHelper db = new DBHelper(getBaseContext());
-        SQLiteDatabase banco = db.getWritableDatabase();
-
-        ContentValues ctv;
-
-
-        for(int i = 1; i<21; i++)
+        switch (id) //REALIZA ALGUMA AÇÃO BASEADA NO ID RECEBIDO
         {
-            ctv = new ContentValues();
-
-            ctv.put("consumo", 0.355*i+"L");
-            ctv.put("data", Integer.toString(i)+"/03/2020");
-
-            banco.insert("consumo", null, ctv);
+            case 1:
+                criarRegistros();
+                break;
+            case 2:
+                //editarRegistros();
+                break;
+            case 3:
+                deletarRegistros();
+                break;
         }
 
-
     }
 
+    public void criarRegistros() {
+
+        DBHelper db = new DBHelper(getBaseContext());
+        SQLiteDatabase banco = db.getWritableDatabase();    //CRIA UM BANCO
+
+        ContentValues ctv = new ContentValues();
+
+        ctv.put("consumo", consumoAtual/1000.0f + "L");     //ARMAZENA VALORES EM UM CONTENTVALUES
+        ctv.put("data", data);
+
+        banco.insert("consumo", null, ctv); //BOTA OS DADOS NA TABELA consumo
+
+        finish(); //FINALIZA A ACTIVITY
+    }
+
+/*   SEM UTILIDADE POR ENQUANTO
     public void editarRegistros()
     {
         DBHelper db = new DBHelper(getBaseContext());
@@ -75,20 +89,20 @@ public class CursoresActivity extends AppCompatActivity {
         }
 
         mCursor.close();
+        finish();
     }
-
+*/
     public void deletarRegistros()
     {
-        DBHelper db = new DBHelper(getBaseContext());
+        DBHelper db = new DBHelper(getBaseContext());       //CRIA UM BANCO
         SQLiteDatabase banco = db.getWritableDatabase();
 
         mCursor = banco.rawQuery("SELECT _id, consumo, data FROM consumo", null);
         ContentValues ctv;
 
+        //DELETA OS REGISTROS
         if(mCursor.moveToFirst())
         {
-            //tem registros
-
             do{
 
                 banco.delete("consumo", "_id = "+ mCursor.getString(0), null);
@@ -102,5 +116,6 @@ public class CursoresActivity extends AppCompatActivity {
 
 
         mCursor.close();
+        finish(); //FINALIZA A ACTIVITY
     }
 }

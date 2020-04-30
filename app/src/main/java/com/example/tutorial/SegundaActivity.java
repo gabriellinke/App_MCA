@@ -182,32 +182,36 @@ public class SegundaActivity extends AppCompatActivity  {
             {
                 //AÇÃO PARA FINALIZAR O DIA
 
-                //AÇÃO PARA ATUALIZAR CONSUMO
                 if(conexao)
                 {
+                    //ATUALIZAR CONSUMO
                     connectedThread.enviar("solicitarDados");
+                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                    int consumoAtual = sp.getInt("consumo_atual", 0);
+
+                    //CONSULTAR A DATA ATUAL
+                    int data[];
+                    data = Get_Calendar.main();
+                    String date = +data[0]+"/"+data[1]+"/"+data[2];
+
+                    //ATUALIZAR BANCO DE DADOS
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("consumo", consumoAtual);
+                    bundle.putString("data", date);
+                    bundle.putInt("id", 1);
+
+                    Intent intent = new Intent(getBaseContext(), CursoresActivity.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+
+                    //ZERAR CONSUMO ATUAL
+                    sp.edit().putInt("consumo_atual", 0).apply();
+
+                    //ZERAR ARDUINO
+                    connectedThread.enviar("zerar");
                 }
                 else
-                {
                     Toast.makeText(getApplicationContext(), "Bluetooth não está conectado", Toast.LENGTH_SHORT).show();
-                }
-
-                //AÇÃO PARA CONSULTAR A DATA ATUAL
-                int data[];
-                data = Get_Calendar.main();
-                Toast.makeText(getApplicationContext(),("Data: "+data[0]+"/"+data[1]+"/"+data[2]) , Toast.LENGTH_SHORT).show();
-
-                //ATUALIZAR BANCO DE DADOS
-                
-
-
-                //ZERAR CONSUMO ATUAL
-
-
-                //ZERAR ARDUINO
-
-
-                //startActivity(new Intent(getBaseContext(), FinalizarActivity.class));
             }
         });
 
