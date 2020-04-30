@@ -38,6 +38,7 @@ public class CursoresActivity extends AppCompatActivity
         {
             case 1:
                 criarRegistros();
+                conferirRegistros();
                 break;
             case 2:
                 //editarRegistros();
@@ -61,35 +62,57 @@ public class CursoresActivity extends AppCompatActivity
 
         banco.insert("consumo", null, ctv); //BOTA OS DADOS NA TABELA consumo
 
-        finish(); //FINALIZA A ACTIVITY
     }
 
-/*   SEM UTILIDADE POR ENQUANTO
-    public void editarRegistros()
+
+    public void conferirRegistros()
     {
         DBHelper db = new DBHelper(getBaseContext());
-        SQLiteDatabase banco = db.getWritableDatabase();
+        SQLiteDatabase banco = db.getWritableDatabase(); //CRIA UM BANCO
 
         mCursor = banco.rawQuery("SELECT _id, consumo, data FROM consumo", null);
-        ContentValues ctv;
-        if(mCursor.moveToFirst())
+
+        ContentValues ctv  = new ContentValues();
+        String data1 = "";
+        String data2 = "";
+        float consumo1 = 0;
+        float consumo2 = 0;
+        float consumo = 0;
+
+        //VERIFICA SE O ÚLTIMO E PENÚLTIMO VALOR TEM A MESMA DATA. SE SIM, SUBSTITUI POR APENAS 1 DADO COM A SOMA DOS CONSUMOS
+        if(mCursor.moveToLast())
         {
-            //tem registros
+            data1   = mCursor.getString(mCursor.getColumnIndex("data"));
+            consumo1 = mCursor.getFloat(mCursor.getColumnIndex("consumo"));
 
-            do{
-                ctv = new ContentValues();
-                ctv.put("data", mCursor.getString(mCursor.getColumnIndex("data"))+ " ALTERADA" );
+            if(mCursor.moveToPrevious())
+            {
+                data2   = mCursor.getString(mCursor.getColumnIndex("data"));
+                consumo2 = mCursor.getFloat(mCursor.getColumnIndex("consumo"));
+            }
 
-                banco.update("consumo", ctv, "_id = "+ mCursor.getString(mCursor.getColumnIndex("_id")), null);
-                Log.d("Cursor: ", mCursor.getString(2));
+            if((!data1.equals("")) && (!data2.equals("")))
+            {
+                if(data1.equals(data2))
+                {
+                    mCursor.moveToLast();
+                    banco.delete("consumo", "_id = "+ mCursor.getString(0), null);
+                    mCursor.moveToPrevious();
+                    banco.delete("consumo", "_id = "+ mCursor.getString(0), null);
 
-            } while(mCursor.moveToNext());
+                    consumo = consumo1 + consumo2;
+
+                    ctv.put("consumo", consumo + "L");     //ARMAZENA VALORES EM UM CONTENTVALUES
+                    ctv.put("data", data1);
+
+                    banco.insert("consumo", null, ctv); //BOTA OS DADOS NA TABELA consumo
+                }
+            }
         }
-
         mCursor.close();
         finish();
     }
-*/
+
     public void deletarRegistros()
     {
         DBHelper db = new DBHelper(getBaseContext());       //CRIA UM BANCO
