@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
 
     <TextView
-        android:id="@+id/consultar_text"
+        android:id="@+id/consumo_message"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="150dp"
+        android:gravity="center"
+        android:text="@string/consumo_message"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/consumo_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="VOCÊ CONSUMIU 0.00L" />
+        android:gravity="center"
+        android:text="0.00 L"
+        android:textColor="#000"
+        android:textSize="30sp" />
+
 </LinearLayout>

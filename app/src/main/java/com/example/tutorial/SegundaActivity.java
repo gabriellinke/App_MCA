@@ -7,9 +7,11 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,10 +28,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import static java.lang.Integer.parseInt;
+
 public class SegundaActivity extends AppCompatActivity  {
 
     //BOTÕES
-    Button botaoConectar, botaoSolicitar, botaoZerar, botaoAtualizar, botaoConsultar, botaoFinalizar, botaoHistorico;
+    Button botaoConectar, botaoZerar, botaoAtualizar, botaoConsultar, botaoFinalizar, botaoHistorico;
 
     //VARIÁVEIS PARA UTILIZAR O BLUETOOTH
     BluetoothAdapter meuBluetoothAdapter = null; //PONTO DE ENTRADA PARA TODA INTERAÇÃO BLUETOOTH
@@ -73,12 +77,11 @@ public class SegundaActivity extends AppCompatActivity  {
         /**---- BOTÕES ------------------------------------------------------------------------------------------------------------------------------------------------**/
 
         botaoConectar   = (Button) findViewById(R.id.parear_button);
-        botaoSolicitar  = (Button) findViewById(R.id.solicitar_button);
         botaoZerar      = (Button) findViewById(R.id.zerar_button);
-        botaoAtualizar  = findViewById(R.id.atualizar_button);
-        botaoConsultar  = findViewById(R.id.consultar_button);
-        botaoFinalizar  = findViewById(R.id.finalizar_button);
-        botaoHistorico  = findViewById(R.id.historico_button);
+        botaoAtualizar  = (Button) findViewById(R.id.atualizar_button);
+        botaoConsultar  = (Button) findViewById(R.id.consultar_button);
+        botaoFinalizar  = (Button) findViewById(R.id.finalizar_button);
+        botaoHistorico  = (Button) findViewById(R.id.historico_button);
 
         botaoConectar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,20 +135,6 @@ public class SegundaActivity extends AppCompatActivity  {
             }
         });
 
-        botaoSolicitar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(conexao)
-                {
-                    connectedThread.enviar("solicitarDados");
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Bluetooth não está conectado", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
         botaoZerar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,9 +155,14 @@ public class SegundaActivity extends AppCompatActivity  {
             public void onClick(View v)
             {
                 //AÇÃO PARA ATUALIZAR CONSUMO
-
-                Toast.makeText(getApplicationContext(), "Consumo atualizado", Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(getBaseContext(),AtualizarActivity.class));
+                if(conexao)
+                {
+                    connectedThread.enviar("solicitarDados");
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Bluetooth não está conectado", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -188,10 +182,30 @@ public class SegundaActivity extends AppCompatActivity  {
             {
                 //AÇÃO PARA FINALIZAR O DIA
 
+                //AÇÃO PARA ATUALIZAR CONSUMO
+                if(conexao)
+                {
+                    connectedThread.enviar("solicitarDados");
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Bluetooth não está conectado", Toast.LENGTH_SHORT).show();
+                }
+
+                //AÇÃO PARA CONSULTAR A DATA ATUAL
                 int data[];
                 data = Get_Calendar.main();
                 Toast.makeText(getApplicationContext(),("Data: "+data[0]+"/"+data[1]+"/"+data[2]) , Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getApplicationContext(), "Dia finalizado", Toast.LENGTH_SHORT).show();
+
+                //ATUALIZAR BANCO DE DADOS
+                
+
+
+                //ZERAR CONSUMO ATUAL
+
+
+                //ZERAR ARDUINO
+
 
                 //startActivity(new Intent(getBaseContext(), FinalizarActivity.class));
             }
@@ -211,6 +225,7 @@ public class SegundaActivity extends AppCompatActivity  {
          **----- VERIFICA SE HÁ '{' NO INÍCIO E '}' NO FINAL, O QUE SIGNIFICA QUE OS DADOS RECEBIDOS ESTÃO COMPLETOS ----------------------------------------------------**/
         mHandler = new Handler()
         {
+            @SuppressLint("SetTextI18n")
             @Override
             public void handleMessage(@NonNull Message msg)
             {
@@ -240,6 +255,9 @@ public class SegundaActivity extends AppCompatActivity  {
 
                                 TextView tv = (TextView) findViewById(R.id.estado_text);
                                 tv.setText(dadosFinais + " ml");
+
+                                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                                sp.edit().putInt("consumo_atual", Integer.parseInt(dadosFinais.trim())).apply();    //SALVA O CONSUMO ATUAL
 
                             }
                         }

@@ -32,9 +32,10 @@ public class MainActivity extends AppCompatActivity
     /**--------------------------------------------------------------------------------------------------------------------------------------------------------------**/
 
     /**---- BANCO DE DADOS ------------------------------------------------------------------------------------------------------------------------------------------------**/
+        //Acho q é desnecessário
 
-        DBHelper db = new DBHelper(getBaseContext());
-        db.getWritableDatabase();
+        //DBHelper db = new DBHelper(getBaseContext());
+        // db.getWritableDatabase();
     /**--------------------------------------------------------------------------------------------------------------------------------------------------------------**/
 
         //startActivity(new Intent(getBaseContext(), CursoresActivity.class));

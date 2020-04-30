@@ -7,6 +7,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+/** CLASSE QUE CRIA A BASE DO BANCO DE DADOS **/
+
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String NOME_BANCO = "quantidade_agua.db";
@@ -39,10 +41,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Log.d("DBHELPER", "onUpgrade");
 
-        Log.d("DBHELPER", "ATT 1");
-        Log.d("DBHELPER", "ATT 2");
-        Log.d("DBHELPER", "ATT 3");
-        Log.d("DBHELPER", "ATT 4");
+        /*switch (oldVersion)
+        {
+            case 1:
+                faz att
+            case 2:
+                ...
+            case 3:
+                ...
+        }*/
 
         String sqlConsumo = "CREATE TABLE IF NOT EXISTS consumo (" +
                 "_id INTEGER PRIMARY KEY," +

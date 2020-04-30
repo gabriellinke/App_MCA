@@ -4,6 +4,7 @@
     <string name="parear_message">Após conectar-se ao bluetooth, realize o pareamento com o HC-05</string>
     <string name="lista_dispositivos_message">Lista de dispositivos</string>
     <string name="conferir_message">Confira se o dispositivo está pareado</string>
+    <string name="consumo_message">Consumo atual:</string>
 
     <string name="start_button">INICIAR</string>
     <string name="atualizar_button">Atualizar consumo atual</string>

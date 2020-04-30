@@ -26,7 +26,7 @@ public class CursoresActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-    criarRegistros();
+    //criarRegistros();
 
 
     }
