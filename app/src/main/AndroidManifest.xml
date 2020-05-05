@@ -40,6 +40,9 @@
             android:name=".ListaDispositivos"
             android:label="Dispositivos pareados"
             android:theme="@android:style/Theme.Dialog"/>
+        <activity
+            android:name=".meuBluetooth"
+            android:label="Bluetooth"/>
 
     </application>
 
