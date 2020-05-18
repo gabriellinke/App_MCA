@@ -15,6 +15,9 @@
     <string name="label_consultar">Consultar consumo atual</string>
     <string name="label_historico">Histórico de consumo</string>
     <string name="label_parear">Dispositivos Bluetooth</string>
+    <string name="label_bluetooth">Bluetooth</string>
+    <string name="label_pareados">Dispositivos Pareados</string>
+    <string name="label_cursores">Cursores</string>
 
     <string name="title_activity_cursores">CursoresActivity</string>
     <!-- Strings used for fragments for navigation -->

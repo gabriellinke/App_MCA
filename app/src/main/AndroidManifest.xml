@@ -7,9 +7,11 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
+        android:name=".App"
         android:icon="@mipmap/ic_launcher_agua"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_agua"
@@ -29,7 +31,7 @@
             android:label="@string/label_historico"/>
         <activity
             android:name=".CursoresActivity"
-            android:label="Cursores" />
+            android:label="@string/label_cursores" />
         <activity
             android:name=".SegundaActivity"
             android:label="@string/label_escolha" />
@@ -38,11 +40,18 @@
             android:label="@string/label_consultar" />
         <activity
             android:name=".ListaDispositivos"
-            android:label="Dispositivos pareados"
+            android:label="@string/label_pareados"
             android:theme="@android:style/Theme.Dialog"/>
         <activity
             android:name=".meuBluetooth"
-            android:label="Bluetooth"/>
+            android:label="@string/label_bluetooth"/>
+        <service
+            android:name=".NotificationActivity"
+            android:label="Notificacao"/>
+
+        <receiver android:name=".NotificationReceiver"/>
+        <receiver android:name=".AlarmReceiver"/>
+
 
     </application>
 
