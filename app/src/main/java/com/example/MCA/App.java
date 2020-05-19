@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 
+/** CLASSE PARA CRIAR O CANAL PARA ENVIAR A NOTIFICAÇÃO ------------------------------------------------------------------------------**/
 public class App extends Application {
     public static final String CHANNEL_1_ID = "channel1";
 
@@ -24,7 +25,9 @@ public class App extends Application {
             channel1.setDescription("This is Channel 1");
 
             NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel1);
+
+            if(manager!=null)
+                manager.createNotificationChannel(channel1);
         }
 
     }

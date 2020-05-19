@@ -45,11 +45,8 @@
         <activity
             android:name=".meuBluetooth"
             android:label="@string/label_bluetooth"/>
-        <service
-            android:name=".NotificationActivity"
-            android:label="Notificacao"/>
 
-        <receiver android:name=".NotificationReceiver"/>
+        <service android:name=".NotificationService" />
         <receiver android:name=".AlarmReceiver"/>
 
 
