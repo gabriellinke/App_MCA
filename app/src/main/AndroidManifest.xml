@@ -42,9 +42,6 @@
             android:name=".ListaDispositivos"
             android:label="@string/label_pareados"
             android:theme="@android:style/Theme.Dialog"/>
-        <activity
-            android:name=".meuBluetooth"
-            android:label="@string/label_bluetooth"/>
 
         <service android:name=".NotificationService" />
         <receiver android:name=".AlarmReceiver"/>
