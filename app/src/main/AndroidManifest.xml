@@ -11,7 +11,6 @@
 
     <application
         android:allowBackup="true"
-        android:name=".App"
         android:icon="@mipmap/ic_launcher_agua"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_agua"
@@ -42,10 +41,6 @@
             android:name=".ListaDispositivos"
             android:label="@string/label_pareados"
             android:theme="@android:style/Theme.Dialog"/>
-
-        <service android:name=".NotificationService" />
-        <receiver android:name=".AlarmReceiver"/>
-
 
     </application>
 
