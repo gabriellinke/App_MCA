@@ -16,8 +16,6 @@ import java.util.Set;
 
 public class ListaDispositivos extends ListActivity {
 
-    private BluetoothAdapter meuBluetoothAdapter2 = null;
-
     static String ENDERECO_MAC = null;
 
     @Override
@@ -27,7 +25,7 @@ public class ListaDispositivos extends ListActivity {
         //USADO PARA MOSTRAR A LISTA DE DISPOSITIVOS PAREADOS
         ArrayAdapter<String> ArrayBluetooth = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
 
-        meuBluetoothAdapter2 = BluetoothAdapter.getDefaultAdapter();
+        BluetoothAdapter meuBluetoothAdapter2 = BluetoothAdapter.getDefaultAdapter();
 
         //RECEBE OS DISPOSITIVOS PAREADOS
         Set<BluetoothDevice> dispositivosPareados = meuBluetoothAdapter2.getBondedDevices();

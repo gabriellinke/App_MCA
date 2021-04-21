@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.text.DecimalFormat;
+
 import helpers.DBHelper;
 
 public class CursoresActivity extends AppCompatActivity
@@ -57,7 +59,9 @@ public class CursoresActivity extends AppCompatActivity
 
         ContentValues ctv = new ContentValues();
 
-        ctv.put("consumo", consumoAtual/1000.0f + "L");     //ARMAZENA VALORES EM UM CONTENTVALUES
+        DecimalFormat formatador = new DecimalFormat("0.000");
+
+        ctv.put("consumo", formatador.format(consumoAtual/1000.0f) + "L");     //ARMAZENA VALORES EM UM CONTENTVALUES
         ctv.put("data", data);
 
         banco.insert("consumo", null, ctv); //BOTA OS DADOS NA TABELA consumo

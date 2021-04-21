@@ -37,14 +37,14 @@ public class HistoricoActivity extends AppCompatActivity {
 
         //PEGA OS DADOS DA COLUNA DE CONSUMO E DE DATA
         String[] from = {
-               "consumo",
-               "data"
+           "consumo",
+           "data"
         };
 
         //COLOCA OS DADOS NAS TEXTVIEWS
         int[] to = {
-                    R.id.txvConsumo,
-                    R.id.txvData
+            R.id.txvConsumo,
+            R.id.txvData
         };
 
         //CRIA O ADAPTER COM OS VETORES from E to INSTANCIADOS ANTERIORMENTE

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -58,7 +59,7 @@ public class SegundaActivity extends AppCompatActivity  {
 
         meuBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        if(meuBluetoothAdapter == null) //NAÕ TEM BLUETOOTH
+        if(meuBluetoothAdapter == null) //NÃO TEM BLUETOOTH
             Toast.makeText(getApplicationContext(), "Seu dispositivo não possui bluetooth", Toast.LENGTH_LONG).show();
 
         else if(!meuBluetoothAdapter.isEnabled()) //BLUETOOTH ESTÁ DESATIVADO
@@ -183,11 +184,11 @@ public class SegundaActivity extends AppCompatActivity  {
                     intent.putExtras(bundle);
                     startActivity(intent);
 
-                    //ZERAR CONSUMO ATUAL
-                    sp.edit().putInt("consumo_atual", 0).apply();
-
                     //ZERAR ARDUINO
                     connectedThread.enviar("zerar");
+
+                    //ZERAR CONSUMO ATUAL
+                    sp.edit().putInt("consumo_atual", 0).apply();
 
                     Toast.makeText(getApplicationContext(), "Dia finalizado", Toast.LENGTH_SHORT).show();
                 }
